@@ -1,6 +1,6 @@
 import React from "react";
+import BookCard from "../shared/BookCard";
 import { IBook } from "@/types/book.type";
-import BookCard from "@/components/shared/BookCard";
 
 const getBooks = async () => {
   const res = await fetch("http://localhost:3000/booksData.json");
@@ -16,17 +16,17 @@ const Books = async () => {
       {/* Section Title */}
       <div className="mb-8 text-center">
         <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-[#23BE0A]">
-           Our Collectin
+          Explore Books
         </p>
 
         <h2 className="font-serif text-3xl font-bold text-[#131313] md:text-4xl">
-         Explore All Books
+         Our Popular Books
         </h2>
       </div>
 
       {/* Books */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {booksData.map((book : IBook) => {
+        {booksData.slice(0,6).map((book : IBook) => {
           return (
             <BookCard key={book.bookId} book={book} />
           );
